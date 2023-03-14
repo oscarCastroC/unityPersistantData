@@ -13,10 +13,11 @@ public class scorePlayer : MonoBehaviour
 {
     public static scorePlayer Instance;
     public TextMeshProUGUI txtScore;
-    private string currentName;
-    private string namePlayerSc;
-    private int scorePlayerSC;
+    public string currentName;
+    public string namePlayerSc;
+    public int scorePlayerSC;
 
+    [System.Serializable]
     class SaveData
     {
         public string namePlayer;
@@ -36,11 +37,8 @@ public class scorePlayer : MonoBehaviour
         Instance = this;
         // marks the MainManager GameObject attached to this script not to be destroyed when the scene changes
         DontDestroyOnLoad(gameObject);
+
         LoadPlayerData();
-
-        txtScore = GameObject.Find("txt_bestScore").GetComponent<TextMeshProUGUI>();
-        txtScore.text = "Best Score - " + scorePlayer.Instance.GetHightName() + ": " + scorePlayer.Instance.GetHightScore();
-
     }
 
     public string GetHightName()
@@ -62,6 +60,9 @@ public class scorePlayer : MonoBehaviour
         string json = JsonUtility.ToJson(data);
 
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+        
+        LoadPlayerData();
+
     }
 
     public void LoadPlayerData()
@@ -74,13 +75,15 @@ public class scorePlayer : MonoBehaviour
 
             namePlayerSc = data.namePlayer;
             scorePlayerSC = data.scorePlayer;
-            setBestScore();
+            
         }
+        setBestScore();
     }
 
     public void setBestScore()
     {
-        txtScore.text = "Best Score: " + namePlayerSc + scorePlayerSC;
+        txtScore = GameObject.Find("txt_bestScore").GetComponent<TextMeshProUGUI>();
+        txtScore.text = "Best Score - " + namePlayerSc + ": " + scorePlayerSC;
     }
 
     public bool checkScore(int scoreIn)
@@ -105,7 +108,7 @@ public class scorePlayer : MonoBehaviour
         currentName = nameIn;
     }
 
-    public void StartNew()
+    public void StartNewGame()
     {
         SceneManager.LoadScene(1);  // main game
     }

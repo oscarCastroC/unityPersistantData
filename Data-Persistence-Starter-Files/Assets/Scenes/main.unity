@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 188020407}
   - component: {fileID: 188020406}
   m_Layer: 5
-  m_Name: txt_bestScore
+  m_Name: txt_score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,7 +411,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2137539498}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1420,7 +1420,7 @@ GameObject:
   - component: {fileID: 1839246250}
   - component: {fileID: 1839246249}
   m_Layer: 5
-  m_Name: txtBestScore
+  m_Name: txt_bestScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1439,7 +1439,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2137539498}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1635,9 +1635,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 188020405}
-  - {fileID: 474497239}
   - {fileID: 1839246248}
+  - {fileID: 474497239}
+  - {fileID: 188020405}
   - {fileID: 922928298}
   m_Father: {fileID: 0}
   m_RootOrder: 6

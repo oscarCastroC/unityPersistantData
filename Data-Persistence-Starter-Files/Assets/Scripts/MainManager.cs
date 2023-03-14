@@ -38,7 +38,7 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
-
+        scorePlayer.Instance.setBestScore();
     }
     
 
@@ -56,12 +56,6 @@ public class MainManager : MonoBehaviour
                 Ball.transform.SetParent(null);
                 Ball.AddForce(forceDir * 2.0f, ForceMode.VelocityChange);
             }
-
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                SceneManager.LoadScene(0);
-            }
-
         }
         else if (m_GameOver)
         {
@@ -70,7 +64,12 @@ public class MainManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SceneManager.LoadScene(0);
+        }
+
     }
 
     void AddPoint(int point)
@@ -82,12 +81,10 @@ public class MainManager : MonoBehaviour
     public void GameOver()
     {
         m_GameOver = true;
-
-        Debug.Log("Entramos?");
         if (scorePlayer.Instance.checkScore(m_Points))
         {
-            Debug.Log("Siiiii entrams ");
             scorePlayer.Instance.SaveplayeData(m_Points);
+            scorePlayer.Instance.setBestScore();
         }
 
         GameOverText.SetActive(true);
